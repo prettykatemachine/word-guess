@@ -23,7 +23,7 @@ var questions = [
     {
         type: 'confirm',
         name: 'playAgain',
-        message: 'Want to play again?',
+        message: 'Wanna play again?',
         when: function () {
             return (target.allGuessed() || guessesLeft <= 0);
         }
@@ -45,7 +45,7 @@ function ask() {
     
     inquirer.prompt(questions).then(answers => {
         if ('playAgain' in answers && !answers.playAgain) {
-            console.log('thanks for playing');
+            console.log('Thanks for playing!');
             process.exit();
         }
         if (answers.playAgain) {
@@ -62,14 +62,14 @@ function ask() {
                     guessesLeft--;
                 }
             } else {
-                console.log('you already guessed', currentGuess); 
+                console.log('You already guessed that letter.', currentGuess); 
             }
         }
 
         if (!target.allGuessed()) {
             if (guessesLeft < 1) {
-                console.log('no more guesses');
-                console.log(targetWord, 'was correct.');
+                console.log('You are out of guesses.');
+                console.log(targetWord, 'was correct!');
             } else {
                 console.log('guesses so far:', guesses.join(' '));
                 console.log('guesses remaining:', guessesLeft);
